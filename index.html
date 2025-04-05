@@ -47,7 +47,7 @@
         
         .logo {
             font-size: 28px;
-            font-weight: 700; /* Жирный как в iOS */
+            font-weight: 700;
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -125,7 +125,7 @@
         
         .movie-card {
             background-color: var(--card-color);
-            border-radius: 12px; /* Более круглые углы как в iOS */
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -229,7 +229,7 @@
         
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
         }
@@ -345,11 +345,11 @@
         <h1 class="animate__animated animate__fadeIn animate__delay-1s">Выберите фильм для просмотра</h1>
         
         <div class="movies-grid">
-            <div class="movie-card" onclick="showMovie('Майнкрафт - В Кино', 'https://www.google.com')">
+            <div class="movie-card" onclick="showMovie('Майнкрафт - В Кино', 'https://rutube.ru/play/embed/6b17a7da17142c292a296575f1c5a728')">
                 <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10812607/7ae661a4-8d36-4fad-9278-9b63655c7eb3/440x660" alt="Майнкрафт - В Кино" class="movie-poster">
                 <div class="movie-info">
                     <h3 class="movie-title">Майнкрафт - В Кино</h3>
-                    <p class="movie-year">2025</p> <!-- Год изменен на 2025 -->
+                    <p class="movie-year">2025</p>
                 </div>
             </div>
         </div>
@@ -360,13 +360,21 @@
                 <button class="close-player" onclick="hidePlayer()">×</button>
             </div>
             <div class="video-container">
-                <iframe id="movie-frame" src="" frameborder="0" allowfullscreen></iframe>
+                <iframe
+                    id="movie-frame"
+                    src=""
+                    frameBorder="0"
+                    allow="clipboard-write; autoplay"
+                    webkitAllowFullScreen
+                    mozallowfullscreen
+                    allowFullScreen
+                ></iframe>
             </div>
         </div>
     </div>
     
     <footer class="animate__animated animate__fadeInUp animate__delay-1s">
-        <p class="footer-text">© 2025 Miqz Films. Все права защищены.</p> <!-- Год изменен на 2025 -->
+        <p class="footer-text">© 2025 Miqz Films. Все права защищены.</p>
         <div class="footer-links">
             <a href="https://t.me/miqyz" class="footer-link pulse" target="_blank">
                 <i class="fab fa-telegram"></i> t.me/miqyz
