@@ -116,6 +116,13 @@
             letter-spacing: -0.5px;
         }
         
+        h2 {
+            font-size: 28px;
+            color: var(--primary-light);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
         .movies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -285,6 +292,68 @@
             font-size: 20px;
         }
         
+        /* About page styles */
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--card-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s;
+        }
+        
+        .about-section p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            background-color: rgba(106, 13, 173, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            background-color: rgba(106, 13, 173, 0.2);
+        }
+        
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-light);
+        }
+        
+        .team-member h3 {
+            margin: 0 0 5px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .team-member p {
+            margin: 0;
+            color: var(--primary-light);
+            font-size: 14px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -322,6 +391,10 @@
             .logo {
                 font-size: 24px;
             }
+            
+            .about-section {
+                padding: 20px;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -329,27 +402,167 @@
 <body>
     <header>
         <div class="container header-content">
-            <a href="#" class="logo animate__animated animate__fadeIn">Miqz <span>Films</span></a>
+            <a href="#" class="logo animate__animated animate__fadeIn" onclick="showSection('home')">Miqz <span>Films</span></a>
             <nav>
                 <ul>
-                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1s">Главная</a></li>
-                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1-2s">Фильмы</a></li>
-                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1-4s">Сериалы</a></li>
-                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1-6s">О нас</a></li>
+                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1s" onclick="showSection('home')">Главная</a></li>
+                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1-2s" onclick="showSection('movies')">Фильмы</a></li>
+                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1-4s" onclick="showSection('series')">Сериалы</a></li>
+                    <li><a href="#" class="animate__animated animate__fadeIn animate__delay-1-6s" onclick="showSection('about')">О нас</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     
     <div class="container">
-        <h1 class="animate__animated animate__fadeIn animate__delay-1s">Выберите фильм для просмотра</h1>
+        <!-- Home Section -->
+        <div id="home-section">
+            <h1 class="animate__animated animate__fadeIn animate__delay-1s">Добро пожаловать в Miqz Films</h1>
+            <p style="text-align: center; font-size: 18px; max-width: 800px; margin: 0 auto 30px;">
+                Лучшие фильмы и сериалы в одном месте. Выбирайте и смотрите с удовольствием!
+            </p>
+            
+            <div class="movies-grid">
+                <div class="movie-card" onclick="showMovie('Майнкрафт - В Кино', 'https://rutube.ru/play/embed/6b17a7da17142c292a296575f1c5a728')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10812607/7ae661a4-8d36-4fad-9278-9b63655c7eb3/440x660" alt="Майнкрафт - В Кино" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Майнкрафт - В Кино</h3>
+                        <p class="movie-year">2025</p>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="showMovie('Интерстеллар', 'https://rutube.ru/play/embed/106f2519e8b8f1a259b5f0a8e7a5f0f9')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4057c4b8-8208-4a04-b169-26b0661453e3/440x660" alt="Интерстеллар" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Интерстеллар</h3>
+                        <p class="movie-year">2014</p>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="showMovie('Начало', 'https://rutube.ru/play/embed/7d9e8c3a5f6b4c1a9d2e3f4a5b6c7d8e')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/bf93b465-1189-4155-9dd1-cb9fb5cb1bb5/440x660" alt="Начало" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Начало</h3>
+                        <p class="movie-year">2010</p>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="showMovie('Довод', 'https://rutube.ru/play/embed/8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/5c3ac6b5-0e8b-482d-9e1e-2c4f5e6d7e8f/440x660" alt="Довод" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Довод</h3>
+                        <p class="movie-year">2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <div class="movies-grid">
-            <div class="movie-card" onclick="showMovie('Майнкрафт - В Кино', 'https://rutube.ru/play/embed/6b17a7da17142c292a296575f1c5a728')">
-                <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10812607/7ae661a4-8d36-4fad-9278-9b63655c7eb3/440x660" alt="Майнкрафт - В Кино" class="movie-poster">
-                <div class="movie-info">
-                    <h3 class="movie-title">Майнкрафт - В Кино</h3>
-                    <p class="movie-year">2025</p>
+        <!-- Movies Section -->
+        <div id="movies-section" class="hidden">
+            <h1 class="animate__animated animate__fadeIn animate__delay-1s">Наши фильмы</h1>
+            
+            <div class="movies-grid">
+                <div class="movie-card" onclick="showMovie('Майнкрафт - В Кино', 'https://rutube.ru/play/embed/6b17a7da17142c292a296575f1c5a728')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10812607/7ae661a4-8d36-4fad-9278-9b63655c7eb3/440x660" alt="Майнкрафт - В Кино" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Майнкрафт - В Кино</h3>
+                        <p class="movie-year">2025</p>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="showMovie('Интерстеллар', 'https://rutube.ru/play/embed/106f2519e8b8f1a259b5f0a8e7a5f0f9')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4057c4b8-8208-4a04-b169-26b0661453e3/440x660" alt="Интерстеллар" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Интерстеллар</h3>
+                        <p class="movie-year">2014</p>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="showMovie('Начало', 'https://rutube.ru/play/embed/7d9e8c3a5f6b4c1a9d2e3f4a5b6c7d8e')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/bf93b465-1189-4155-9dd1-cb9fb5cb1bb5/440x660" alt="Начало" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Начало</h3>
+                        <p class="movie-year">2010</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Series Section -->
+        <div id="series-section" class="hidden">
+            <h1 class="animate__animated animate__fadeIn animate__delay-1s">Наши сериалы</h1>
+            
+            <div class="movies-grid">
+                <div class="movie-card" onclick="showMovie('Довод', 'https://rutube.ru/play/embed/8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/5c3ac6b5-0e8b-482d-9e1e-2c4f5e6d7e8f/440x660" alt="Довод" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Довод</h3>
+                        <p class="movie-year">2020</p>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="showMovie('Игра престолов', 'https://rutube.ru/play/embed/9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/0c9c8b9e-7e3f-4a1b-8e2d-3e4f5a6b7c8d/440x660" alt="Игра престолов" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Игра престолов</h3>
+                        <p class="movie-year">2011-2019</p>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="showMovie('Во все тяжкие', 'https://rutube.ru/play/embed/a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5')">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d/440x660" alt="Во все тяжкие" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Во все тяжкие</h3>
+                        <p class="movie-year">2008-2013</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- About Section -->
+        <div id="about-section" class="hidden">
+            <h1 class="animate__animated animate__fadeIn animate__delay-1s">О нас</h1>
+            
+            <div class="about-section">
+                <h2>Наша история</h2>
+                <p>
+                    Miqz Films был основан в 2025 году с целью предоставления качественного контента для ценителей кино. 
+                    Наша платформа объединяет любителей фильмов и сериалов со всего мира, предлагая широкий выбор 
+                    контента на любой вкус.
+                </p>
+                
+                <h2>Наша миссия</h2>
+                <p>
+                    Мы стремимся сделать просмотр фильмов и сериалов максимально удобным и приятным. 
+                    Наша команда постоянно работает над улучшением сервиса и расширением библиотеки контента.
+                </p>
+                
+                <h2>Создатели</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://i.ibb.co/PspKDXyQ/IMG-20250405-144632-319.jpg" alt="Михаил">
+                        <h3>@miqyz</h3>
+                        <p>Основатель</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://i.ibb.co/PspKDXyQ/IMG-20250405-144632-319.jpg" alt="Анна">
+                        <h3>C0ns0l3 :3</h3>
+                        <p>Главный редактор</p>
+                    </div>
+                </div>
+                
+                <h2>Контакты</h2>
+                <p>
+                    Если у вас есть вопросы или предложения, пожалуйста, свяжитесь с нами через Telegram:
+                </p>
+                <div style="display: flex; gap: 20px; margin-top: 20px;">
+                    <a href="https://t.me/miqyz" class="footer-link pulse" target="_blank" style="font-size: 16px;">
+                        <i class="fab fa-telegram"></i> t.me/miqyz
+                    </a>
+                    <a href="https://t.me/miqydev" class="footer-link pulse" target="_blank" style="font-size: 16px;">
+                        <i class="fab fa-telegram"></i> t.me/miqydev
+                    </a>
                 </div>
             </div>
         </div>
@@ -386,8 +599,26 @@
     </footer>
     
     <script>
-        // Анимация появления карточек
+        // Показать определенную секцию и скрыть остальные
+        function showSection(sectionId) {
+            // Скрыть все секции
+            document.getElementById('home-section').classList.add('hidden');
+            document.getElementById('movies-section').classList.add('hidden');
+            document.getElementById('series-section').classList.add('hidden');
+            document.getElementById('about-section').classList.add('hidden');
+            
+            // Показать выбранную секцию
+            document.getElementById(sectionId + '-section').classList.remove('hidden');
+            
+            // Прокрутить к верху страницы
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // По умолчанию показываем домашнюю страницу
         document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+            
+            // Анимация появления карточек
             const cards = document.querySelectorAll('.movie-card');
             cards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
